@@ -11,7 +11,6 @@ from operator import itemgetter
 
 #from optimizely_config_manager import OptimizelyConfigManager
 
-
 '''2020 updates:
 - updated the SDK version to the latest in requirements.txt
 - deleted optimizely_config_manager.py + its references (get_obj)
@@ -22,31 +21,20 @@ from optimizely.config_manager import PollingConfigManager
 from optimizely import logger
 import logging
 
-#actually teh SDK_KEY
-SDK_KEY = 'PnsTgkYA2fJUhHZRnZ9S5f'
-
+SDK_KEY = 'Lsmf9dMjernYf1TMcF4Bq'
 
 CONF_MANAGER = PollingConfigManager(
    sdk_key = SDK_KEY,
    update_interval=10
 )
 
-
-
-
 from flask import Flask, render_template, request
-
-
-
 
 application = Flask(__name__, static_folder='images')
 application.secret_key = os.urandom(24)
 
-
 optimizely_client = optimizely.Optimizely(config_manager=CONF_MANAGER, logger=logger.SimpleLogger(min_level=logging.INFO))
 #optimizely_client = optimizely.Optimizely(datafile, logger=logger.SimpleLogger(min_level=logging.INFO))
-
-
 
 def build_items():
   items = []
